@@ -12,6 +12,7 @@ body {
   background-color: #218c74;
   display: flex;
   align-items: flex-end;
+  padding-left: 1rem;
 }
 
 .page-action {
@@ -21,7 +22,7 @@ body {
 
 .cellprop-actions-container {
   height: 3rem;
-  background-color: forestgreen;
+  background-color: #ecf0f1;
   font-family: sans-serif;
   display: flex;
   align-items: center;
@@ -48,8 +49,32 @@ body {
 }
 
 .formulabar-actions-container {
-  height: 3rem;
-  background-color: pink;
+  height: 2rem;
+  background-color: #ecf0f1;
+  padding-left: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.formulabar-actions-container>* {
+  display: inline-block;
+  margin-right: 0.7rem;
+}
+
+.formula-icon {}
+
+.formula-bar {
+  width: calc(100vw - 5rem - 0.7rem - 0.7rem - 0.7rem);
+}
+
+.address-bar {
+  width: 5rem;
+}
+
+.formulabar-actions-container>input {
+  border: none;
+  outline: none;
+  height: 70%;
 }
 
 .sheet-actions-container {
@@ -57,22 +82,21 @@ body {
   background-color: green;
   display: flex;
   align-items: center;
-  padding: 0 0.5rem;
-  justify-content: flex-end;
-}
-
-
-
-.sheets-folder-container {
-  height: 80%;
-  background-color: yellow;
-  display: inline-block;
-  width: calc(100vw - 2vw);
-
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  gap: 1rem;
+  background-color: #ecf0f1;
 }
 
 .sheet-actions-container>* {
   display: inline-block;
+}
+
+.sheets-folder-container {
+  height: 80%;
+  width: calc(100vw - 2vw);
+  display: flex;
+  align-items: center;
 }
 
 .sheet-add-icon {
@@ -81,9 +105,12 @@ body {
 
 .sheet-folder {
   text-decoration: underline;
+  font-weight: bold;
+  text-decoration-thickness: 3px;
+  font-size: 0.9rem;
 }
 
 .cells-gird-container {
-  height: calc(100vh - 3rem - 3rem - 3rem - 3rem);
+  height: calc(100vh - 2rem - 3rem - 3rem - 3rem);
   background-color: brown;
 }
