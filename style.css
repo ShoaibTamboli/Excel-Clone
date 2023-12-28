@@ -113,12 +113,14 @@ body {
 .cells-gird-container {
   height: calc(100vh - 2rem - 3rem - 3rem - 3rem);
   position: relative;
+  overflow: scroll;
+  background-color: #ecf0f1;
 }
 
 .cells-container {
   position: absolute;
-  width: 2rem;
-  height: 3rem;
+  /* width: 2rem; */
+  height: 13rem;
   top: 0;
   left: 2rem;
   background-color: rgb(205, 50, 184);
@@ -131,7 +133,7 @@ body {
 }
 
 .address-column-container {
-  height: 12rem;
+  height: 2rem;
   width: 2rem;
   background-color: #218c74;
 }
@@ -139,5 +141,18 @@ body {
 .address-row-container {
   height: 2rem;
   background-color: #aee647;
+  display: flex;
+}
+
+.address-column {
+  height: 2rem;
+  width: 2rem;
+  text-align: center;
+  border: 1px solid #dfe4ea;
+}
+
+.address-row {
+  height: 2rem;
+  width: 5rem;
 
 }
