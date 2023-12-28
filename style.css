@@ -112,5 +112,32 @@ body {
 
 .cells-gird-container {
   height: calc(100vh - 2rem - 3rem - 3rem - 3rem);
-  background-color: brown;
+  position: relative;
+}
+
+.cells-container {
+  position: absolute;
+  width: 2rem;
+  height: 3rem;
+  top: 0;
+  left: 2rem;
+  background-color: rgb(205, 50, 184);
+}
+
+.top-left-dummy-box {
+  height: 2rem;
+  width: 2rem;
+  background-color: #747d8c;
+}
+
+.address-column-container {
+  height: 12rem;
+  width: 2rem;
+  background-color: #218c74;
+}
+
+.address-row-container {
+  height: 2rem;
+  background-color: #aee647;
+
 }
