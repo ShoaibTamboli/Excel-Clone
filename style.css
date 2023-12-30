@@ -34,6 +34,10 @@ body {
   margin-right: 1rem;
 }
 
+.cellprop-actions-container>*:hover {
+  cursor: pointer;
+}
+
 .cellprop-actions-container>select {
   border: none;
   border-radius: 2px;
@@ -195,5 +199,4 @@ body {
   background-color: yellowgreen;
   top: 0;
   left: 0;
-  cursor: pointer;
 }
