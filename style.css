@@ -182,3 +182,18 @@ body {
 .row-cell {
   display: flex;
 }
+
+.color-prop {
+  position: relative;
+}
+
+.color-prop>input {
+  opacity: 0;
+  /* display: none; */
+  /* visibility: hidden; */
+  position: absolute;
+  background-color: yellowgreen;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
