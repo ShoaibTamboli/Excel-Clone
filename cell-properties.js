@@ -8,7 +8,7 @@ for (let i = 0; i < rows; i++) {
       bold: false,
       italic: false,
       underline: false,
-      alignmnet: "left",
+      alignment: "left",
       fontFamily: "sans-serif",
       fontSize: "14",
       fontColor: "#000000",
@@ -102,6 +102,91 @@ bgColor.addEventListener("change", (e) => {
   cell.style.backgroundColor = cellProp.bgColor; // UI changed (part1)
   bgColor.value = cellProp.bgColor; // UI changed (part2)
 });
+alignment.forEach((alignEle) => {
+  alignEle.addEventListener("click", (e) => {
+    let address = addressBar.value;
+    let [cell, cellProp] = activeCell(address);
+    let alignValue = e.target.classList[2];
+
+    cellProp.alignment = alignValue;
+    cell.style.textAlign = cellProp.alignment; // UI changed (part1)
+    switch (alignValue) {
+      case "left":
+        leftAlign.style.backgroundColor = activeColorProp;
+        centerAlign.style.backgroundColor = inactiveColorProp;
+        rightAlign.style.backgroundColor = inactiveColorProp;
+        break;
+      case "center":
+        leftAlign.style.backgroundColor = inactiveColorProp;
+        centerAlign.style.backgroundColor = activeColorProp;
+        rightAlign.style.backgroundColor = inactiveColorProp;
+        break;
+      case "right":
+        leftAlign.style.backgroundColor = inactiveColorProp;
+        centerAlign.style.backgroundColor = inactiveColorProp;
+        rightAlign.style.backgroundColor = activeColorProp;
+        break;
+    }
+  });
+});
+
+let allCells = document.querySelectorAll(".cell");
+for (let i = 0; i < allCells.length; i++) {
+  addListenerToAttachCellProperties(allCells[i]);
+}
+
+function addListenerToAttachCellProperties(cell) {
+  //work
+  cell.addEventListener("click", (e) => {
+    let address = addressBar.value;
+    let [rid, cid] = decodeRidCidFromAddress(address);
+    let cellProp = sheetDB[rid][cid];
+    console.log(sheetDB[rid][cid]);
+
+    // Apply cell properties
+    cell.style.fontWeight = cellProp.bold ? "bold" : "normal";
+    cell.style.fontStyle = cellProp.italic ? "italic" : "normal";
+    cell.style.textDecoration = cellProp.underline ? "underline" : "none";
+    cell.style.fontSize = cellProp.fontSize + "px";
+    cell.style.fontFamily = cellProp.fontFamily;
+    cell.style.color = cellProp.fontColor;
+    cell.style.backgroundColor =
+      cellProp.bgColor === "#000000" ? "transparent" : cellProp.bgColor;
+    cell.style.textAlign = cellProp.alignment;
+
+    //Apply properties on UI properties container
+    bold.style.backgroundColor = cellProp.bold
+      ? activeColorProp
+      : inactiveColorProp;
+    italic.style.backgroundColor = cellProp.italic
+      ? activeColorProp
+      : inactiveColorProp;
+    underline.style.backgroundColor = cellProp.underline
+      ? activeColorProp
+      : inactiveColorProp;
+    fontSize.value = cellProp.fontSize;
+    fontFamily.value = cellProp.fontFamily;
+    fontColor.value = cellProp.fontColor;
+    bgColor.value = cellProp.bgColor;
+    switch (cellProp.alignment) {
+      case "left":
+        leftAlign.style.backgroundColor = activeColorProp;
+        centerAlign.style.backgroundColor = inactiveColorProp;
+        rightAlign.style.backgroundColor = inactiveColorProp;
+        break;
+      case "center":
+        leftAlign.style.backgroundColor = inactiveColorProp;
+        centerAlign.style.backgroundColor = activeColorProp;
+        rightAlign.style.backgroundColor = inactiveColorProp;
+        break;
+      case "right":
+        leftAlign.style.backgroundColor = inactiveColorProp;
+        centerAlign.style.backgroundColor = inactiveColorProp;
+        rightAlign.style.backgroundColor = activeColorProp;
+        break;
+    }
+  });
+}
 
 function activeCell(address) {
   let [rid, cid] = decodeRidCidFromAddress(address);
