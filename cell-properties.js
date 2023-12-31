@@ -33,8 +33,6 @@ let leftAlign = alignment[0];
 let centerAlign = alignment[1];
 let rightAlign = alignment[2];
 
-// let addressBar = document.querySelector(".address-bar");
-
 let activeColorProp = "#d1d8e0";
 let inactiveColorProp = "#ecf0f1";
 //Application of two way binding:
@@ -50,7 +48,6 @@ bold.addEventListener("click", (e) => {
     ? activeColorProp
     : inactiveColorProp; // UI changed (part2)
 });
-
 italic.addEventListener("click", (e) => {
   let address = addressBar.value;
   let [cell, cellProp] = activeCell(address);
@@ -61,7 +58,6 @@ italic.addEventListener("click", (e) => {
     ? activeColorProp
     : inactiveColorProp; // UI changed (part2)
 });
-
 underline.addEventListener("click", (e) => {
   let address = addressBar.value;
   let [cell, cellProp] = activeCell(address);
@@ -72,11 +68,45 @@ underline.addEventListener("click", (e) => {
     ? activeColorProp
     : inactiveColorProp; // UI changed (part2)
 });
+fontSize.addEventListener("change", (e) => {
+  let address = addressBar.value;
+  let [cell, cellProp] = activeCell(address);
+
+  //Modification:
+  cellProp.fontSize = fontSize.value; //DB Data changed
+  cell.style.fontSize = cellProp.fontSize + "px"; // UI changed (part1)
+  fontSize.value = cellProp.fontSize; // UI changed (part2)
+});
+fontFamily.addEventListener("change", (e) => {
+  let address = addressBar.value;
+  let [cell, cellProp] = activeCell(address);
+
+  //Modification:
+  cellProp.fontFamily = fontFamily.value; //DB Data changed
+  cell.style.fontFamily = cellProp.fontFamily; // UI changed (part1)
+  fontFamily.value = cellProp.fontFamily; // UI changed (part2)
+});
+fontColor.addEventListener("change", (e) => {
+  let address = addressBar.value;
+  let [cell, cellProp] = activeCell(address);
+  //Modification:
+  cellProp.fontColor = fontColor.value; //DB Data changed
+  cell.style.color = cellProp.fontColor; // UI changed (part1)
+  fontColor.value = cellProp.fontColor; // UI changed (part2)
+});
+bgColor.addEventListener("change", (e) => {
+  let address = addressBar.value;
+  let [cell, cellProp] = activeCell(address);
+  //Modification:
+  cellProp.bgColor = bgColor.value; //DB Data changed
+  cell.style.backgroundColor = cellProp.bgColor; // UI changed (part1)
+  bgColor.value = cellProp.bgColor; // UI changed (part2)
+});
 
 function activeCell(address) {
   let [rid, cid] = decodeRidCidFromAddress(address);
 
-  //Access cell and storage object
+  //Access cell & storage object
   // let cell = document.querySelector(`.cell[rid=${rid}][cid=${cid}]`);
   let cell = document.querySelector(`.cell[rid="${rid}"][cid="${cid}"]`);
   console.log(cell);
